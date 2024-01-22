@@ -1,0 +1,63 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+.btnWrap {
+  position: relative;
+  width: 140px;
+  height: 50px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 10px 15px;
+}
+.up,.down {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  mix-blend-mode: difference;
+  transition: .5s ease;
+}
+.btnWrap:hover .up {
+  top: -120px;
+}
+.down {
+  top: 120px;
+}
+.btnWrap:hover .down {
+  top: 50%;
+}
+.btnWrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 100%;
+  background: #000;
+  transform: skewX(-15deg);
+  transition: .5s ease;
+  animation: moveBG 3s infinite linear;
+}
+@keyframes moveBG {
+  0% {
+    left: -40px;
+  }
+  100% {
+    left: calc(100% + 30px);
+  }
+}
+.btnWrap:hover::before {
+  width: 100%;
+  transform: skewX(0deg);
+  animation: none;
+}
+
